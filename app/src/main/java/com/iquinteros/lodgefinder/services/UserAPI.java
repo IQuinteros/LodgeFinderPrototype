@@ -25,7 +25,7 @@ public class UserAPI {
 
             ContentValues contentValues = new ContentValues();
 
-            contentValues.put("id", 1);
+            contentValues.putNull("id");
             contentValues.put("nombres", user.getNombres());
             contentValues.put("apellidos", user.getApellidos());
             contentValues.put("email", user.getEmail());
