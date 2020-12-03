@@ -11,13 +11,13 @@ public class SqliteConnection extends SQLiteOpenHelper {
     private static final String DB_NAME = "lodge_finder";
     private static final int VERSION = 1;
 
-    public SqliteConnection(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public SqliteConnection(Context context) {
+        super(context, DB_NAME, null, VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE usuarios(id integer, nombres text, apellidos text, email text, contacto text, foto integer, empresa integer)");
+        sqLiteDatabase.execSQL("CREATE TABLE usuario(id integer, nombres text, apellidos text, email text, rut integer, contacto text, foto integer, empresa integer)");
     }
 
     @Override

@@ -9,7 +9,7 @@ public class User {
     private int rut;
     private int numeroContacto;
     private int foto;
-    private boolean esEmpresa;
+    private boolean empresa;
 
     public User(int id, String nombres, String apellidos, String email, int rut, int numeroContacto, int foto, boolean esEmpresa) {
         this.id = id;
@@ -19,7 +19,7 @@ public class User {
         this.rut = rut;
         this.numeroContacto = numeroContacto;
         this.foto = foto;
-        this.esEmpresa = esEmpresa;
+        this.empresa = empresa;
     }
 
     public int getId() {
@@ -50,8 +50,8 @@ public class User {
         return foto;
     }
 
-    public boolean isEsEmpresa() {
-        return esEmpresa;
+    public boolean isEmpresa() {
+        return empresa;
     }
 
     public void setId(int id) {
@@ -82,8 +82,8 @@ public class User {
         this.foto = foto;
     }
 
-    public void setEsEmpresa(boolean esEmpresa) {
-        this.esEmpresa = esEmpresa;
+    public void setEmpresa(boolean empresa) {
+        this.empresa = empresa;
     }
 
     @Override
@@ -96,7 +96,7 @@ public class User {
                 ", rut=" + rut +
                 ", numeroContacto=" + numeroContacto +
                 ", foto=" + foto +
-                ", esEmpresa=" + esEmpresa +
+                ", Empresa=" + empresa +
                 '}';
     }
 }

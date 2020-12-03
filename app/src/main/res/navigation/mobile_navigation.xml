@@ -12,14 +12,26 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.iquinteros.lodgefinder.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:id="@+id/nav_add"
+        android:name="com.iquinteros.lodgefinder.ui.users.AddUser"
+        android:label="@string/menu_add"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.iquinteros.lodgefinder.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:id="@+id/nav_view"
+        android:name="com.iquinteros.lodgefinder.ui.users.ViewUser"
+        android:label="@string/menu_view"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_modify"
+        android:name="com.iquinteros.lodgefinder.ui.users.ModifyUser"
+        android:label="@string/menu_modify"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_delete"
+        android:name="com.iquinteros.lodgefinder.ui.users.DeleteUser"
+        android:label="@string/menu_delete"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>
