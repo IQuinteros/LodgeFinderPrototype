@@ -38,6 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Rut"
+                android:maxLength="9"
                 android:inputType="number"/>
             <EditText
                 android:id="@+id/contacto_user"

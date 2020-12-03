@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.iquinteros.lodgefinder.MainActivity;
 import com.iquinteros.lodgefinder.R;
 
 public class DeleteUser extends Fragment {
@@ -33,6 +34,11 @@ public class DeleteUser extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(DeleteUserViewModel.class);
         // TODO: Use the ViewModel
+
+        ((MainActivity)getActivity()).deleteBtn = getView().findViewById(R.id.delete_btn);
+
+
+        ((MainActivity)getActivity()).delete_rut = getView().findViewById(R.id.delete_text);
     }
 
 }

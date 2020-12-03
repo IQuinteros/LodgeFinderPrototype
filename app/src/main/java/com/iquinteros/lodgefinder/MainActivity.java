@@ -44,6 +44,12 @@ public class MainActivity extends AppCompatActivity {
     /* VIEW */
     public ListView listView;
 
+    /* DELETE */
+    public EditText delete_rut;
+
+    // Buttons in Delete
+    public Button deleteBtn;
+
     // API
     public UserAPI userApi;
 
@@ -116,6 +122,18 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(this, "Añadido", Toast.LENGTH_SHORT);
         toast.show();
 
+    }
+
+    public void deleteUser(View view){
+        int rutText = Integer.parseInt(delete_rut.getText().toString());
+
+        Toast toast = Toast.makeText(this, "Añadido", Toast.LENGTH_SHORT);
+        if(userApi.deleteUserByRut(rutText)){
+            toast = Toast.makeText(this, "Eliminado satisfactoriamente", Toast.LENGTH_SHORT);
+        }else{
+            toast = Toast.makeText(this, "Rut no encontrado", Toast.LENGTH_SHORT);
+        }
+        toast.show();
     }
 
 }

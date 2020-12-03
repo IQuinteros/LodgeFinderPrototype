@@ -85,7 +85,7 @@ public class UserAPI {
 
     public boolean deleteUserByRut(int rut){
         SQLiteDatabase db = connection.getWritableDatabase();
-        return db.delete("uuario", "rut = ?", new String[]{ Integer.toString(rut) }) > 0;
+        return db.delete("usuario", "rut = ?", new String[]{ Integer.toString(rut) }) > 0;
     }
 
 }
