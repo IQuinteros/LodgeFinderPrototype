@@ -11,7 +11,7 @@ public class User {
     private int foto;
     private boolean empresa;
 
-    public User(int id, String nombres, String apellidos, String email, int rut, int numeroContacto, int foto, boolean esEmpresa) {
+    public User(int id, String nombres, String apellidos, String email, int rut, int numeroContacto, int foto, boolean empresa) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -92,7 +92,7 @@ public class User {
     }
 
     public String toComplexString() {
-        return  "ID:" + id +
+        return  "ID: " + id +
                 "\nNombre: '" + nombres + '\'' +
                 "\nApellidos: '" + apellidos + '\'' +
                 "\nEmail: '" + email + '\'' +

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -51,6 +52,7 @@ public class AddUser extends Fragment {
         ((MainActivity)getActivity()).contacto = getView().findViewById(R.id.contacto_user);
         ((MainActivity)getActivity()).foto = getView().findViewById(R.id.foto_user);
         ((MainActivity)getActivity()).empresa = getView().findViewById(R.id.empresa_user);
+
     }
 
 

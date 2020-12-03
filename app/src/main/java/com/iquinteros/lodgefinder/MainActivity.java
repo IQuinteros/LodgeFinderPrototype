@@ -1,7 +1,9 @@
 package com.iquinteros.lodgefinder;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
@@ -129,6 +131,8 @@ public class MainActivity extends AppCompatActivity {
                 empresaBool
         );
 
+        final Context thisContext = this;
+
         if(userApi.findUserByRut(user.getRut()) != null){
 
             new AlertDialog.Builder(view.getContext())
@@ -139,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         userApi.modifyUser(user);
 
-                        Toast toast = Toast.makeText(getParent(), "Modificado", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(thisContext, "Modificado", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 })
