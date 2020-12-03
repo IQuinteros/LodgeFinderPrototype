@@ -3,10 +3,17 @@ package com.iquinteros.lodgefinder;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.iquinteros.lodgefinder.models.User;
+import com.iquinteros.lodgefinder.services.UserAPI;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -19,6 +26,26 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+
+    /* ADD */
+
+    // Inputs in Add
+    public EditText nombres;
+    public EditText apellidos;
+    public EditText email;
+    public EditText rut;
+    public EditText contacto;
+    public EditText foto;
+    public CheckBox empresa;
+
+    // Buttons in Add
+    public Button acceptBtn;
+
+    /* VIEW */
+    public ListView listView;
+
+    // API
+    public UserAPI userApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        userApi = new UserAPI(getBaseContext());
     }
 
     @Override
@@ -59,6 +88,34 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void addUser(View view){
+
+        String nombresText = nombres.getText().toString();
+        String apellidosText = apellidos.getText().toString();
+        String emailText = email.getText().toString();
+        String rutText = rut.getText().toString();
+        String contactoText = contacto.getText().toString();
+        String fotoText = foto.getText().toString();
+        boolean empresaBool = empresa.isChecked();
+
+        // Create user from model
+        User user = new User(
+                0,
+                nombresText,
+                apellidosText,
+                emailText,
+                Integer.parseInt(rutText),
+                Integer.parseInt(contactoText),
+                Integer.parseInt(fotoText),
+                empresaBool
+        );
+
+        userApi.insert(user);
+        Toast toast = Toast.makeText(this, "Añadido", Toast.LENGTH_SHORT);
+        toast.show();
+
     }
 
 }

@@ -5,9 +5,76 @@
     android:layout_height="match_parent"
     tools:context=".ui.users.AddUser">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_margin="10px">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/nombres_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombres"
+                android:inputType="textPersonName"/>
+            <EditText
+                android:id="@+id/apellidos_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Apellidos"
+                android:inputType="textPersonName"/>
+            <EditText
+                android:id="@+id/email_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"/>
+            <EditText
+                android:id="@+id/rut_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Rut"
+                android:inputType="number"/>
+            <EditText
+                android:id="@+id/contacto_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Número de contacto"
+                android:inputType="phone"/>
+            <EditText
+                android:id="@+id/foto_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Foto Usuario"
+                android:inputType="number"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¿Es empresa?"/>
+                <CheckBox
+                    android:id="@+id/empresa_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/accept_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Añadir"
+                android:onClick="addUser"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </FrameLayout>

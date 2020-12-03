@@ -11,8 +11,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
+import com.iquinteros.lodgefinder.MainActivity;
 import com.iquinteros.lodgefinder.R;
+import com.iquinteros.lodgefinder.models.User;
+import com.iquinteros.lodgefinder.services.UserAPI;
+
+import java.util.List;
 
 public class ViewUser extends Fragment {
 
@@ -33,6 +40,22 @@ public class ViewUser extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(ViewUserViewModel.class);
         // TODO: Use the ViewModel
+
+        loadUsersList();
+    }
+
+    public void loadUsersList(){
+        UserAPI userApi = ((MainActivity)getActivity()).userApi;
+
+        ((MainActivity)getActivity()).listView = getView().findViewById(R.id.view_users);
+
+        /* Load from API */
+
+        ArrayAdapter<User> adapter = new ArrayAdapter<User>(getContext(), android.R.layout.simple_list_item_1, userApi.getUsers());
+        Toast toast = Toast.makeText(getContext(), "Usuarios cargados", Toast.LENGTH_SHORT);
+        toast.show();
+
+        ((MainActivity)getActivity()).listView.setAdapter(adapter);
     }
 
 }

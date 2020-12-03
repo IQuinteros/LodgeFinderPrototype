@@ -5,9 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.users.ViewUser">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/view_users"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+        </ListView>
+    </ScrollView>
 
 </FrameLayout>

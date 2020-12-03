@@ -25,7 +25,7 @@ public class UserAPI {
 
             ContentValues contentValues = new ContentValues();
 
-            contentValues.put("id", user.getId());
+            contentValues.put("id", 1);
             contentValues.put("nombres", user.getNombres());
             contentValues.put("apellidos", user.getApellidos());
             contentValues.put("email", user.getEmail());
@@ -45,7 +45,7 @@ public class UserAPI {
         }
     }
 
-    public List<User> getUser(){
+    public List<User> getUsers(){
 
         SQLiteDatabase db = connection.getReadableDatabase();
         List<User> list = new ArrayList<>();
@@ -62,7 +62,7 @@ public class UserAPI {
                         cursor.getInt(4),
                         cursor.getInt(5),
                         cursor.getInt(6),
-                        cursor.getInt(7) == 1
+                        cursor.getInt(7) > 0
                 );
 
                 list.add(user);
@@ -77,6 +77,15 @@ public class UserAPI {
         }
 
         return list;
+    }
+
+    public boolean modifyUser(User user){
+        return false;
+    }
+
+    public boolean deleteUserByRut(int rut){
+        SQLiteDatabase db = connection.getWritableDatabase();
+        return db.delete("uuario", "rut = ?", new String[]{ Integer.toString(rut) }) > 0;
     }
 
 }
