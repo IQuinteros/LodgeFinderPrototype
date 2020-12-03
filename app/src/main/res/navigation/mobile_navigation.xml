@@ -24,12 +24,6 @@
         tools:layout="@layout/view_user_fragment" />
 
     <fragment
-        android:id="@+id/nav_modify"
-        android:name="com.iquinteros.lodgefinder.ui.users.ModifyUser"
-        android:label="@string/menu_modify"
-        tools:layout="@layout/modify_user_fragment" />
-
-    <fragment
         android:id="@+id/nav_delete"
         android:name="com.iquinteros.lodgefinder.ui.users.DeleteUser"
         android:label="@string/menu_delete"

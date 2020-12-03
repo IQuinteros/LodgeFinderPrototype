@@ -1,7 +1,9 @@
 package com.iquinteros.lodgefinder.ui.users;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -56,6 +59,28 @@ public class ViewUser extends Fragment {
         toast.show();
 
         ((MainActivity)getActivity()).listView.setAdapter(adapter);
+
+        ((MainActivity)getActivity()).listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if(((User)((MainActivity)getActivity()).listView.getItemAtPosition(i)) == null){
+                    return;
+                }
+
+                User selectedUser = ((User)((MainActivity)getActivity()).listView.getItemAtPosition(i));
+
+                new AlertDialog.Builder(view.getContext())
+                        .setTitle(Integer.toString(selectedUser.getRut()))
+                        .setMessage(selectedUser.toComplexString())
+
+                        .setPositiveButton(android.R.string.yes, null)
+
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .show();
+
+            }
+        });
     }
 
 }

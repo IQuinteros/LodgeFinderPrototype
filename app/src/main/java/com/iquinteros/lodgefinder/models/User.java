@@ -88,15 +88,17 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", nombres='" + nombres + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", email='" + email + '\'' +
-                ", rut=" + rut +
-                ", numeroContacto=" + numeroContacto +
-                ", foto=" + foto +
-                ", Empresa=" + empresa +
-                '}';
+        return getNombres() + " " + getApellidos() + "\n" + getRut();
+    }
+
+    public String toComplexString() {
+        return  "ID:" + id +
+                "\nNombre: '" + nombres + '\'' +
+                "\nApellidos: '" + apellidos + '\'' +
+                "\nEmail: '" + email + '\'' +
+                "\nRut: " + rut +
+                "\nNúmeroContacto: " + numeroContacto +
+                "\nFoto: " + foto +
+                "\nEmpresa: " + empresa;
     }
 }

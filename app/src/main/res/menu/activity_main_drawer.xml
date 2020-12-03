@@ -17,10 +17,6 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_view" />
         <item
-            android:id="@+id/nav_modify"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_modify" />
-        <item
             android:id="@+id/nav_delete"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_delete" />

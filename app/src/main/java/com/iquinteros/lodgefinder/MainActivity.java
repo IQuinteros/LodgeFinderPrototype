@@ -1,5 +1,6 @@
 package com.iquinteros.lodgefinder;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -15,6 +16,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.iquinteros.lodgefinder.models.User;
 import com.iquinteros.lodgefinder.services.UserAPI;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_add, R.id.nav_view, R.id.nav_modify, R.id.nav_delete)
+                R.id.nav_home, R.id.nav_add, R.id.nav_view, R.id.nav_delete)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -106,8 +108,17 @@ public class MainActivity extends AppCompatActivity {
         String fotoText = foto.getText().toString();
         boolean empresaBool = empresa.isChecked();
 
+        if(nombresText.isEmpty() || apellidosText.isEmpty() || emailText.isEmpty()
+            || rutText.isEmpty() || contactoText.isEmpty() || fotoText.isEmpty()){
+
+            Toast toast = Toast.makeText(this, "Faltan datos por completar", Toast.LENGTH_LONG);
+            toast.show();
+
+            return;
+        }
+
         // Create user from model
-        User user = new User(
+        final User user = new User(
                 0,
                 nombresText,
                 apellidosText,
@@ -118,9 +129,32 @@ public class MainActivity extends AppCompatActivity {
                 empresaBool
         );
 
-        userApi.insert(user);
-        Toast toast = Toast.makeText(this, "Añadido", Toast.LENGTH_SHORT);
-        toast.show();
+        if(userApi.findUserByRut(user.getRut()) != null){
+
+            new AlertDialog.Builder(view.getContext())
+                .setTitle("¿Modificar usuario?")
+                .setMessage("Ya hay un usuario con este rut. ¿Desea modificarlo con estos nuevos datos?")
+
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        userApi.modifyUser(user);
+
+                        Toast toast = Toast.makeText(getParent(), "Modificado", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                })
+
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
+        }
+        else{
+            userApi.insert(user);
+
+            Toast toast = Toast.makeText(this, "Añadido", Toast.LENGTH_SHORT);
+            toast.show();
+        }
 
     }
 

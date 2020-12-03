@@ -79,8 +79,56 @@ public class UserAPI {
         return list;
     }
 
+    public User findUserByRut(int rut){
+        SQLiteDatabase db = connection.getReadableDatabase();
+        User foundUser = null;
+
+        Cursor cursor = db.rawQuery("SELECT * FROM usuario WHERE rut = ?", new String[]{ Integer.toString(rut) });
+
+        while(cursor.moveToNext()){
+            foundUser = new User(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getInt(4),
+                    cursor.getInt(5),
+                    cursor.getInt(6),
+                    cursor.getInt(7) > 0
+            );
+        }
+
+        return foundUser;
+    }
+
     public boolean modifyUser(User user){
-        return false;
+        SQLiteDatabase db = connection.getWritableDatabase();
+
+        boolean modified = false;
+
+        try{
+
+            ContentValues contentValues = new ContentValues();
+
+            contentValues.put("nombres", user.getNombres());
+            contentValues.put("apellidos", user.getApellidos());
+            contentValues.put("email", user.getEmail());
+            contentValues.put("rut", user.getRut());
+            contentValues.put("contacto", user.getNumeroContacto());
+            contentValues.put("foto", user.getFoto());
+            contentValues.put("empresa", user.isEmpresa());
+
+            modified = db.update("usuario", contentValues, "rut = ?", new String[]{ Integer.toString(user.getRut()) }) > 0;
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            db.close();
+        }
+
+        return modified;
     }
 
     public boolean deleteUserByRut(int rut){
