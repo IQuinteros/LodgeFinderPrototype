@@ -64,7 +64,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="A continuación ingrese un número que corresponderá al número identificador de una imagen de perfil predeterminada."/>
+                    android:text="A continuación ingrese un número que corresponderá al número identificador de una imagen de perfil. (En un futuro se podrá seleccionar la imagen directamente)"/>
             </LinearLayout>
 
             <EditText
