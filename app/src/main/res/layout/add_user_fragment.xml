@@ -53,12 +53,31 @@
                 android:layout_height="wrap_content"
                 android:hint="Número de contacto"
                 android:inputType="phone"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_profile"
+                    android:layout_marginHorizontal="20px"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="A continuación ingrese un número que corresponderá al número identificador de una imagen de perfil predeterminada."/>
+            </LinearLayout>
+
             <EditText
                 android:id="@+id/foto_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Foto Usuario"
+                android:hint="ID Foto Perfil (1 por defecto)"
                 android:inputType="number"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Una empresa podrá subir rutas personalizadas con sus ofertas especiales."/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,7 +86,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="¿Es empresa?"/>
+                    android:text="¿Esta cuenta será de empresa?"/>
                 <CheckBox
                     android:id="@+id/empresa_user"
                     android:layout_width="wrap_content"

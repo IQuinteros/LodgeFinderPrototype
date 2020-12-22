@@ -110,13 +110,39 @@ public class MainActivity extends AppCompatActivity {
         String fotoText = foto.getText().toString();
         boolean empresaBool = empresa.isChecked();
 
-        if(nombresText.isEmpty() || apellidosText.isEmpty() || emailText.isEmpty()
-            || rutText.isEmpty() || contactoText.isEmpty() || fotoText.isEmpty()){
+        // Check inputs
 
-            Toast toast = Toast.makeText(this, "Faltan datos por completar", Toast.LENGTH_LONG);
+        String incomplete = "";
+
+        if(nombresText.isEmpty()){
+            incomplete += "El campo nombre está incompleto\n";
+        }
+        if(apellidosText.isEmpty()){
+            incomplete += "El campo apellido está incompleto\n";
+        }
+        if(emailText.isEmpty()){
+            incomplete += "El campo email está incompleto\n";
+        }
+        if(rutText.isEmpty()){
+            incomplete += "El campo rut está incompleto\n";
+        }
+        if(contactoText.isEmpty()){
+            incomplete += "El campo contacto está incompleto\n";
+        }
+
+        if(!incomplete.isEmpty()){
+            Toast toast = Toast.makeText(this, incomplete, Toast.LENGTH_LONG);
             toast.show();
 
             return;
+        }
+
+        // Check foto ID
+
+        int fotoID = 1;
+
+        if(!fotoText.isEmpty()){
+            fotoID = Integer.parseInt(fotoText);
         }
 
         // Create user from model
@@ -127,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 emailText,
                 Integer.parseInt(rutText),
                 Integer.parseInt(contactoText),
-                Integer.parseInt(fotoText),
+                fotoID,
                 empresaBool
         );
 
