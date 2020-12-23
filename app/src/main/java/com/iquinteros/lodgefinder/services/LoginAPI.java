@@ -111,7 +111,7 @@ public class LoginAPI {
         return modified;
     }
 
-    public boolean deleteLoginByRut(){
+    public boolean deleteLogin(){
         SQLiteDatabase db = connection.getWritableDatabase();
         return db.delete("login", "id = 1", new String[]{ }) > 0;
     }

@@ -38,7 +38,7 @@
         android:id="@+id/nav_login"
         android:name="com.iquinteros.lodgefinder.Login"
         android:label="Iniciar sesion"
-        tools:layout="@layout/activity_login"
+        tools:layout="@layout/fragment_login"
         />
     <fragment
         android:id="@+id/nav_addAl"
