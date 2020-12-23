@@ -1,8 +1,5 @@
 package com.iquinteros.lodgefinder.services;
 
-import android.content.Context;
-import android.widget.Toast;
-
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -11,24 +8,9 @@ import org.json.JSONArray;
 
 import cz.msebera.android.httpclient.Header;
 
-public class HttpConnection {
+public class RemoteConnection {
     // Singleton
-    public static HttpConnection httpConnection;
-
-    // Constructor
-    public HttpConnection(Context context) {
-        this.currentContext = context;
-    }
-
-    private Context currentContext;
-
-    public Context getCurrentContext() {
-        return currentContext;
-    }
-
-    public void setCurrentContext(Context currentContext) {
-        this.currentContext = currentContext;
-    }
+    public static RemoteConnection remoteConnection = new RemoteConnection();
 
     private AsyncHttpClient client = new AsyncHttpClient();
 
@@ -39,7 +21,7 @@ public class HttpConnection {
             requestParams.add(keys[i], params[i]);
         }
 
-        final String[] toReturn = new String[0];
+        final String[] toReturn = new String[1];
 
         client.post(url, requestParams, new AsyncHttpResponseHandler() {
             @Override
@@ -47,8 +29,8 @@ public class HttpConnection {
                 String response;
                 response = new String(responseBody);
 
-                if(response.equals("[]")){
-                    printToast("No encontrado");
+                if(response.isEmpty()){
+                    System.out.println("Error HTTP: Nada encontrado");
                 }
                 else{
                     toReturn[0] = response;
@@ -57,7 +39,7 @@ public class HttpConnection {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                printToast("Ha ocurrido un error");
+                System.out.println("Error HTTP: " + error.getMessage());
             }
         });
 
@@ -72,9 +54,5 @@ public class HttpConnection {
             return null;
         }
 
-    }
-
-    private void printToast(String msg){
-        Toast.makeText(currentContext, msg,Toast.LENGTH_SHORT).show();
     }
 }

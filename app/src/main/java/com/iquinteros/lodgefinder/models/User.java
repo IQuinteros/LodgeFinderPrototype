@@ -8,10 +8,10 @@ public class User {
     private String email;
     private int rut;
     private int contactNumber;
-    private int photoUrl;
+    private String photoUrl;
     private boolean isBusiness;
 
-    public User(int id, String names, String lastNames, String email, int rut, int contactNumber, int photoUrl, boolean isBusiness) {
+    public User(int id, String names, String lastNames, String email, int rut, int contactNumber, String photoUrl, boolean isBusiness) {
         this.id = id;
         this.names = names;
         this.lastNames = lastNames;
@@ -21,6 +21,8 @@ public class User {
         this.photoUrl = photoUrl;
         this.isBusiness = isBusiness;
     }
+
+    public User(){ }
 
     public int getId() {
         return id;
@@ -46,7 +48,7 @@ public class User {
         return contactNumber;
     }
 
-    public int getFoto() {
+    public String getFoto() {
         return photoUrl;
     }
 
@@ -78,7 +80,7 @@ public class User {
         this.contactNumber = contactNumber;
     }
 
-    public void setFoto(int photoUrl) {
+    public void setFoto(String photoUrl) {
         this.photoUrl = photoUrl;
     }
 
