@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.users.AddUser">
+    tools:context=".Ajustes">
 
+    <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +20,7 @@
                 android:layout_margin="10px"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Registrese"
+                android:text="Modifique su cuenta"
                 android:layout_gravity="center"/>
 
             <EditText
@@ -103,7 +104,7 @@
                 android:id="@+id/accept_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Añadir"
+                android:text="Modificar cuenta"
                 android:onClick="addUser"/>
 
         </LinearLayout>

@@ -28,4 +28,34 @@
         android:name="com.iquinteros.lodgefinder.ui.users.DeleteUser"
         android:label="@string/menu_delete"
         tools:layout="@layout/delete_user_fragment" />
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="com.iquinteros.lodgefinder.buscar"
+        android:label="Buscar Alojamiento"
+        tools:layout="@layout/buscar_fragment"
+        />
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.iquinteros.lodgefinder.Login"
+        android:label="Iniciar sesion"
+        tools:layout="@layout/activity_login"
+        />
+    <fragment
+        android:id="@+id/nav_addAl"
+        android:name="com.iquinteros.lodgefinder.Crear_alojamiento"
+        android:label="Publicar Alojamiento"
+        tools:layout="@layout/fragment_crear_alojamiento"
+        />
+    <fragment
+        android:id="@+id/nav_modA"
+        android:name="com.iquinteros.lodgefinder.Modificar_alojamiento"
+        android:label="Modificar publicacion"
+        tools:layout="@layout/fragment_modificar_alojamiento"
+        />
+    <fragment
+        android:id="@+id/nav_modU"
+        android:name="com.iquinteros.lodgefinder.Ajustes"
+        android:label="Modificar usuario"
+        tools:layout="@layout/fragment_ajustes"
+        />
 </navigation>

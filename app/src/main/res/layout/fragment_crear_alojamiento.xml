@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Crear_alojamiento">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10px">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10px"
+                android:text="Publique su alojamiento aqui" />
+
+            <EditText
+                android:id="@+id/nameA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre de su alojamiento"
+                android:inputType="text" />
+            <EditText
+                android:id="@+id/ciudad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ciudad"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Descripcion"
+                android:inputType="textLongMessage" />
+
+            <EditText
+                android:id="@+id/precio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Precio por dia"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Indique tipo de alojamiento:" />
+
+
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <RadioButton
+                        android:id="@+id/Casa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Casa" />
+
+                    <RadioButton
+                        android:id="@+id/Depto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Departamento" />
+
+                    <RadioButton
+                        android:id="@+id/Cabaña"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Cabaña" />
+
+                    <RadioButton
+                        android:id="@+id/Habitacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Habitacion" />
+
+                    <RadioButton
+                        android:id="@+id/Sotano"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Sotano" />
+
+                    <RadioButton
+                        android:id="@+id/Otro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Otro" />
+                </RadioGroup>
+
+
+            <Button
+                android:id="@+id/accept_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="clase aqui"
+                android:text="Añadir" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -18,16 +18,15 @@
                 android:id="@+id/delete_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:maxLength="9"
-                android:hint="Rut de usuario a eliminar"/>
+                android:inputType="text"
+                android:hint="Nombre de la publicacion a eliminar"/>
 
             <Button
                 android:id="@+id/delete_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="deleteUser"
-                android:text="Eliminar"/>
+                android:text="Eliminar publicacion"/>
 
         </LinearLayout>
 
