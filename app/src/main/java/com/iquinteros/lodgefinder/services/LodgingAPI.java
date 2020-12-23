@@ -1,4 +1,4 @@
 package com.iquinteros.lodgefinder.services;
 
-public class UserAPI {
+public class LodgingAPI {
 }

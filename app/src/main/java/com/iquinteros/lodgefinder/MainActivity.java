@@ -1,24 +1,18 @@
 package com.iquinteros.lodgefinder;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
-import com.iquinteros.lodgefinder.models.User;
-import com.iquinteros.lodgefinder.services.UserAPI;
+import com.iquinteros.lodgefinder.services.LoginAPI;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -55,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     public Button deleteBtn;
 
     // API
-    public UserAPI userApi;
+    public LoginAPI loginAPI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        userApi = new UserAPI(getBaseContext());
+        loginAPI = new LoginAPI(getBaseContext());
     }
 
     @Override
@@ -101,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addUser(View view){
+        /*
 
         String nombresText = nombres.getText().toString();
         String apellidosText = apellidos.getText().toString();
@@ -185,10 +180,11 @@ public class MainActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(this, "Añadido", Toast.LENGTH_SHORT);
             toast.show();
         }
-
+        */
     }
 
     public void deleteUser(View view){
+        /*
         int rutText = Integer.parseInt(delete_rut.getText().toString());
 
         Toast toast = Toast.makeText(this, "Añadido", Toast.LENGTH_SHORT);
@@ -198,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
             toast = Toast.makeText(this, "Rut no encontrado", Toast.LENGTH_SHORT);
         }
         toast.show();
+        */
     }
 
 }

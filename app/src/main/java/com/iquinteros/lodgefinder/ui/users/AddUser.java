@@ -11,16 +11,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.iquinteros.lodgefinder.MainActivity;
 import com.iquinteros.lodgefinder.R;
-import com.iquinteros.lodgefinder.models.User;
-import com.iquinteros.lodgefinder.services.UserAPI;
 
 public class AddUser extends Fragment {
 
