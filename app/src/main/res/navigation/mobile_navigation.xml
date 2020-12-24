@@ -6,10 +6,10 @@
     app:startDestination="@+id/nav_search">
 
     <fragment
-        android:id="@+id/nav_view"
-        android:name="com.iquinteros.lodgefinder.ui.users.ViewUserFragment"
-        android:label="@string/menu_view"
-        tools:layout="@layout/view_user_fragment" />
+        android:id="@+id/nav_lodging_view"
+        android:name="com.iquinteros.lodgefinder.ui.users.ViewMyLodgingFragment"
+        android:label="Ver mis publicaciones"
+        tools:layout="@layout/view_my_lodging_fragment" />
 
     <fragment
         android:id="@+id/nav_search"

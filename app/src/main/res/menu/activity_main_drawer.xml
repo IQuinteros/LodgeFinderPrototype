@@ -15,9 +15,9 @@
             android:title="Publicar alojamiento"
             />
         <item
-            android:id="@+id/nav_view"
+            android:id="@+id/nav_lodging_view"
             android:icon="@android:drawable/ic_menu_view"
-            android:title="Ver tus publicaiones" />
+            android:title="Ver mis publicaciones" />
         <item
             android:id="@+id/nav_login"
             android:icon="@drawable/ic_profile"

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.users.ViewUserFragment">
+    tools:context=".ui.users.ViewMyLodgingFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -11,7 +11,7 @@
         android:fillViewport="true">
 
         <ListView
-            android:id="@+id/view_users"
+            android:id="@+id/view_user_lodgings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
