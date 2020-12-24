@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Ajustes">
+    tools:context=".ui.users.SettingsFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -106,6 +106,13 @@
                 android:layout_height="wrap_content"
                 android:text="Modificar cuenta"
                 android:onClick="addUser"/>
+
+            <Button
+                android:id="@+id/logout_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80px"
+                android:text="Cerrar sesión"/>
 
         </LinearLayout>
 

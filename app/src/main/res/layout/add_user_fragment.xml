@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.users.AddUser">
+    tools:context=".ui.users.RegisterUserFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -100,11 +100,10 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/accept_btn"
+                android:id="@+id/register_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Añadir"
-                android:onClick="addUser"/>
+                android:text="Registrarse" />
 
         </LinearLayout>
 

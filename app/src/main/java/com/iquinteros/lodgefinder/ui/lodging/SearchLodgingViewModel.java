@@ -1,7 +1,9 @@
 package com.iquinteros.lodgefinder.ui.lodging;
 
+import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.widget.Toast;
 
 import androidx.lifecycle.ViewModel;

@@ -120,18 +120,13 @@ public class Lodging {
 
     @Override
     public String toString() {
-        return "Lodging{" +
-                "id=" + id +
-                ", userID=" + userID +
-                ", city='" + city + '\'' +
-                ", latCoords=" + latCoords +
-                ", longCoords=" + longCoords +
-                ", description='" + description + '\'' +
-                ", kind='" + kind + '\'' +
-                ", price=" + price +
-                ", rating=" + rating +
-                ", publishDate='" + publishDate + '\'' +
-                ", modifyDate='" + modifyDate + '\'' +
-                '}';
+        return id + ") " + city;
+    }
+
+    public String toComplexString(){
+        return description + "\n\n" +
+               "Tipo: " + kind + "\n" +
+               "$" + price + "\n" +
+               "Rating: " + rating;
     }
 }

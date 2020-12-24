@@ -15,12 +15,12 @@ import android.view.ViewGroup;
 import com.iquinteros.lodgefinder.MainActivity;
 import com.iquinteros.lodgefinder.R;
 
-public class DeleteUser extends Fragment {
+public class DeleteUserFragment extends Fragment {
 
     private DeleteUserViewModel mViewModel;
 
-    public static DeleteUser newInstance() {
-        return new DeleteUser();
+    public static DeleteUserFragment newInstance() {
+        return new DeleteUserFragment();
     }
 
     @Override

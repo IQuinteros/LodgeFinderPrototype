@@ -7,11 +7,16 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.iquinteros.lodgefinder.models.Login;
+import com.iquinteros.lodgefinder.models.User;
 import com.iquinteros.lodgefinder.services.LoginAPI;
+import com.iquinteros.lodgefinder.utils.GetLoginResult;
+import com.iquinteros.lodgefinder.utils.LoginUtil;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -78,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         loginAPI = new LoginAPI(getBaseContext());
+
+        updateLoginUser();
     }
 
     @Override
@@ -92,6 +99,24 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void updateLoginUser(){
+        LoginUtil.checkLogin(this, new GetLoginResult() {
+            @Override
+            public void onReady(Login login, User user) {
+                NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+                View hView =  navigationView.getHeaderView(0);
+
+                TextView headerUserName = (TextView)hView.findViewById(R.id.header_user_name);
+                headerUserName.setText(user != null? user.getNombres() + " " + user.getApellidos() : "Inicie sesión");
+
+                TextView headerUserEmail = (TextView)hView.findViewById(R.id.header_user_email);
+                headerUserEmail.setText(user != null? user.getEmail() : "Para acceder a algunas funciones");
+            }
+        });
+
+
     }
 
     public void addUser(View view){

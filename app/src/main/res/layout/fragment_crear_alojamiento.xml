@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Crear_alojamiento">
+    tools:context=".ui.lodging.CreateLodgingFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -24,27 +24,21 @@
                 android:text="Publique su alojamiento aqui" />
 
             <EditText
-                android:id="@+id/nameA"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nombre de su alojamiento"
-                android:inputType="text" />
-            <EditText
-                android:id="@+id/ciudad"
+                android:id="@+id/add_lodging_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ciudad"
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/descripcion"
+                android:id="@+id/add_lodging_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Descripcion"
                 android:inputType="textLongMessage" />
 
             <EditText
-                android:id="@+id/precio"
+                android:id="@+id/add_lodging_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Precio por dia"
@@ -58,6 +52,7 @@
 
 
                 <RadioGroup
+                    android:id="@+id/add_lodging_kind"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
                     <RadioButton
@@ -99,10 +94,9 @@
 
 
             <Button
-                android:id="@+id/accept_btn"
+                android:id="@+id/lodging_add_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="clase aqui"
                 android:text="Añadir" />
 
         </LinearLayout>

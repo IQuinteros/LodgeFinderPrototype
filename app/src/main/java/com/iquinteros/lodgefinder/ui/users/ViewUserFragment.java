@@ -14,12 +14,12 @@ import android.view.ViewGroup;
 
 import com.iquinteros.lodgefinder.R;
 
-public class ViewUser extends Fragment {
+public class ViewUserFragment extends Fragment {
 
     private ViewUserViewModel mViewModel;
 
-    public static ViewUser newInstance() {
-        return new ViewUser();
+    public static ViewUserFragment newInstance() {
+        return new ViewUserFragment();
     }
 
     @Override

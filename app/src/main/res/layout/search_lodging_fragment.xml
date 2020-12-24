@@ -6,28 +6,29 @@
     tools:context=".ui.lodging.SearchLodgingFragment">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/search_lodging_list"
+        <EditText
+            android:id="@+id/search_lodging_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="45dp">
+            android:hint="Ingrese ciudad para su busqueda"
+            android:inputType="text"></EditText>
 
-        </ListView>
-    </ScrollView>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Ingrese ciudad para su busqueda"
-        android:inputType="text"></EditText>
+            <ListView
+                android:id="@+id/search_lodging_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ListView>
+        </ScrollView>
+
+    </LinearLayout>
 
 </FrameLayout>

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login">
+    tools:context=".ui.users.LoginFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -24,23 +24,27 @@
         android:layout_gravity="center"/>
 
     <EditText
-        android:id="@+id/nombres_user"
+        android:id="@+id/email_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
         android:inputType="textPersonName"/>
     <EditText
-        android:id="@+id/pass_user"
+        android:id="@+id/password_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Contraseña"
         android:inputType="textPersonName"/>
-        <Button
-            android:id="@+id/accept_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:onClick="addUser"/>
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login" />
+    <Button
+        android:id="@+id/go_to_register_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar nuevo usuario" />
 
     </LinearLayout>
 

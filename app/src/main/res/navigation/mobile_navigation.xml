@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_view"
-        android:name="com.iquinteros.lodgefinder.ui.users.ViewUser"
+        android:name="com.iquinteros.lodgefinder.ui.users.ViewUserFragment"
         android:label="@string/menu_view"
         tools:layout="@layout/view_user_fragment" />
 
@@ -19,21 +19,27 @@
         />
     <fragment
         android:id="@+id/nav_login"
-        android:name="com.iquinteros.lodgefinder.Login"
+        android:name="com.iquinteros.lodgefinder.ui.users.LoginFragment"
         android:label="Iniciar sesion"
         tools:layout="@layout/fragment_login"
         />
     <fragment
         android:id="@+id/nav_addAl"
-        android:name="com.iquinteros.lodgefinder.Crear_alojamiento"
+        android:name="com.iquinteros.lodgefinder.ui.lodging.CreateLodgingFragment"
         android:label="Publicar Alojamiento"
         tools:layout="@layout/fragment_crear_alojamiento"
         />
 
     <fragment
         android:id="@+id/nav_modU"
-        android:name="com.iquinteros.lodgefinder.Ajustes"
-        android:label="Modificar usuario"
+        android:name="com.iquinteros.lodgefinder.ui.users.SettingsFragment"
+        android:label="Ajustes de cuenta"
         tools:layout="@layout/fragment_ajustes"
+        />
+    <fragment
+        android:id="@+id/nav_addUser"
+        android:name="com.iquinteros.lodgefinder.ui.users.RegisterUserFragment"
+        android:label="Registrarse"
+        tools:layout="@layout/add_user_fragment"
         />
 </navigation>

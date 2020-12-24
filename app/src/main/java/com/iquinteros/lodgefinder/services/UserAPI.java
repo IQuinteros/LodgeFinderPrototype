@@ -31,12 +31,12 @@ public class UserAPI {
         }
     }
 
-    public User getUserByEmailAndPassword(String email, String password){
+    public void getUserByEmailAndPassword(String email, String password, final GetUserResult userResult){
 
         String[] keys = new String[2];
         String[] params = new String[2];
 
-        String url = "http://zeakservices.com/ev3/getUserByEmailAndPassword.php";
+        String url = "https://zeakservices.com/software/projects/lodging/responses/user/get_user_by_email_pass_resp.php";
         keys[0] = "email";
         keys[1] = "password";
 
@@ -44,69 +44,95 @@ public class UserAPI {
         params[1] = password;
 
         // TODO: CAMBIAR URL
-        JSONArray response = RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params);
+        RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
+            @Override
+            public void onGetData(JSONArray result) {
+                if(result.length() > 0){
+                    userResult.onReady(parseJsonToUser(result));
+                }
+                else{
+                    userResult.onReady(null);
+                }
+            }
 
-        if(response.length() > 0){
-            return parseJsonToUser(response);
-        }
-        else{
-            return null;
-        }
+            @Override
+            public void onFail() {
+                userResult.onReady(null);
+            }
+        });
+
+
 
     }
 
-    public User getUserById(int id){
+    public void getUserById(int id, final GetUserResult userResult){
 
         String[] keys = new String[1];
         String[] params = new String[1];
 
-        String url = "http://zeakservices.com/ev3/getUserByEmailAndPassword.php";
+        String url = "https://zeakservices.com/software/projects/lodging/responses/user/get_user_by_id_resp.php";
         keys[0] = "id";
 
         params[0] = Integer.toString(id);
 
         // TODO: CAMBIAR URL
-        JSONArray response = RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params);
+        RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
+            @Override
+            public void onGetData(JSONArray result) {
+                if(result.length() > 0){
+                    userResult.onReady(parseJsonToUser(result));
+                }
+                else{
+                    userResult.onReady(null);
+                }
+            }
 
-        if(response.length() > 0){
-            return parseJsonToUser(response);
-        }
-        else{
-            return null;
-        }
+            @Override
+            public void onFail() {
+                userResult.onReady(null);
+            }
+        });
 
     }
 
-    public User getUserByEmail(String email){
+    public void getUserByEmail(String email, final GetUserResult userResult){
 
         String[] keys = new String[1];
         String[] params = new String[1];
 
-        String url = "http://zeakservices.com/ev3/getUserByEmailAndPassword.php";
+        String url = "https://zeakservices.com/software/projects/lodging/responses/user/get_user_by_email_resp.php";
         keys[0] = "email";
 
         params[0] = email;
 
         // TODO: CAMBIAR URL
-        JSONArray response = RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params);
+        RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
+            @Override
+            public void onGetData(JSONArray result) {
+                if(result.length() > 0){
+                    userResult.onReady(parseJsonToUser(result));
+                }
+                else{
+                    userResult.onReady(null);
+                }
+            }
 
-        if(response.length() > 0){
-            return parseJsonToUser(response);
-        }
-        else{
-            return null;
-        }
+            @Override
+            public void onFail() {
+                userResult.onReady(null);
+            }
+        });
 
     }
 
-    public boolean pushUser(User newUser, String password, boolean isUpdate){
+    public void pushUser(User newUser, String password, boolean isUpdate, final GetSuccessResult pushResult){
 
         String[] keys = new String[8];
         String[] params = new String[8];
 
         String url = isUpdate
-                ? "http://zeakservices.com/ev3/getUserByEmailAndPassword.php"   // URL UPDATE
-                : "http://zeakservices.com/ev3/getUserByEmailAndPassword.php";  // URL ADD
+                ? "https://zeakservices.com/software/projects/lodging/responses/lodging/update_user_resp.php"   // URL UPDATE
+                : "https://zeakservices.com/software/projects/lodging/responses/user/push_user_resp.php";  // URL ADD
 
         keys[0] = "names";
         keys[1] = "lastNames";
@@ -130,36 +156,58 @@ public class UserAPI {
         params[7] = newUser.isEmpresa()? "1" : "0";
 
         // TODO: CAMBIAR URL
-        JSONArray response = RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params);
+        RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
+            @Override
+            public void onGetData(JSONArray result) {
+                if(result.length() > 0){
+                    // Return true
+                    pushResult.onReady(true);
+                }
+                else{
+                    // Return false
+                    pushResult.onReady(false);
+                }
+            }
 
-        if(response.length() > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+            @Override
+            public void onFail() {
+                // Return false
+                pushResult.onReady(false);
+            }
+        });
 
     }
 
-    public boolean deleteUser(User user){
+    public void deleteUser(User user, final GetUserResult userResult, final GetSuccessResult pushResult){
 
         String[] keys = new String[1];
         String[] params = new String[1];
 
-        String url = "http://zeakservices.com/ev3/getUserByEmailAndPassword.php";
+        String url = "https://zeakservices.com/software/projects/lodging/responses/user/delete_user_resp.php";
 
         keys[0] = "id";
         params[0] = Integer.toString(user.getId());
 
         // TODO: CAMBIAR URL
-        JSONArray response = RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params);
+        RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
+            @Override
+            public void onGetData(JSONArray result) {
+                if(result.length() > 0){
+                    // Return true
+                    pushResult.onReady(true);
+                }
+                else{
+                    // Return false
+                    pushResult.onReady(false);
+                }
+            }
 
-        if(response.length() > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+            @Override
+            public void onFail() {
+                // Return false
+                pushResult.onReady(false);
+            }
+        });
 
     }
 }

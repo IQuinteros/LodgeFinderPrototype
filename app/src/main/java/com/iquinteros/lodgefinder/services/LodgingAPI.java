@@ -47,149 +47,190 @@ public class LodgingAPI {
         }
     }
 
-    public ArrayList<Lodging> getLodgingsBySearch(String search){
+    public void getLodgingsBySearch(String search, final GetLodgingsResult getLodgingsResult){
 
         String[] keys = new String[1];
         String[] params = new String[1];
 
-        String url = "http://zeakservices.com/ev3/getUserByEmailAndPassword.php";
+        String url = "https://zeakservices.com/software/projects/lodging/responses/lodging/get_lodgings_by_search_resp.php";
         keys[0] = "search";
 
         params[0] = search;
 
         // TODO: CAMBIAR URL
-        JSONArray response = RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params);
+        RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
+            @Override
+            public void onGetData(JSONArray result) {
+                ArrayList<Lodging> lodgings = new ArrayList();
+                if(result.length() > 0){
 
-        ArrayList<Lodging> lodgings = new ArrayList();
-        if(response.length() > 0){
-
-            for(int i = 0; i < response.length(); i++) {
-                try {
-                    lodgings.add(parseJsonObjectToLodging(response.getJSONObject(i)));
-                } catch (Exception e) {
-                    System.out.println("Error parsing to lodging: " + e.getMessage());
+                    for(int i = 0; i < result.length(); i++) {
+                        try {
+                            lodgings.add(parseJsonObjectToLodging(result.getJSONObject(i)));
+                        } catch (Exception e) {
+                            System.out.println("Error parsing to lodging: " + e.getMessage());
+                        }
+                    }
                 }
-            }
-        }
 
-        return lodgings;
+                getLodgingsResult.onReady(lodgings);
+            }
+
+            @Override
+            public void onFail() {
+                getLodgingsResult.onReady(new ArrayList<Lodging>());
+            }
+        });
 
     }
 
-    public Lodging getLodgingById(int id){
+    public void getLodgingById(int id, final GetLodgingResult getLodgingResult){
 
         String[] keys = new String[1];
         String[] params = new String[1];
 
-        String url = "http://zeakservices.com/ev3/getUserByEmailAndPassword.php";
+        String url = "https://zeakservices.com/software/projects/lodging/responses/lodging/get_lodgings_by_id_resp.php";
         keys[0] = "id";
 
         params[0] = Integer.toString(id);
 
         // TODO: CAMBIAR URL
-        JSONArray response = RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params);
+        RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
+            @Override
+            public void onGetData(JSONArray result) {
+                if(result.length() > 0){
+                    getLodgingResult.onReady(parseJsonToLodging(result));
+                }
+                else{
+                    getLodgingResult.onReady(null);
+                }
+            }
 
-        if(response.length() > 0){
-            return parseJsonToLodging(response);
-        }
-        else{
-            return null;
-        }
+            @Override
+            public void onFail() {
+                getLodgingResult.onReady(null);
+            }
+        });
 
     }
 
-    public ArrayList<Lodging> getLodgingsOfUser(int userID){
+    public void getLodgingsOfUser(int userID, final GetLodgingsResult getLodgingsResult){
 
         String[] keys = new String[1];
         String[] params = new String[1];
 
-        String url = "http://zeakservices.com/ev3/getUserByEmailAndPassword.php";
+        String url = "https://zeakservices.com/software/projects/lodging/responses/lodging/get_lodgings_of_user_resp.php";
         keys[0] = "userID";
 
         params[0] = Integer.toString(userID);
 
         // TODO: CAMBIAR URL
-        JSONArray response = RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params);
+        RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
+            @Override
+            public void onGetData(JSONArray result) {
+                ArrayList<Lodging> lodgings = new ArrayList();
+                if(result.length() > 0){
 
-        ArrayList<Lodging> lodgings = new ArrayList();
-        if(response.length() > 0){
-
-            for(int i = 0; i < response.length(); i++) {
-                try {
-                    lodgings.add(parseJsonObjectToLodging(response.getJSONObject(i)));
-                } catch (Exception e) {
-                    System.out.println("Error parsing to lodging: " + e.getMessage());
+                    for(int i = 0; i < result.length(); i++) {
+                        try {
+                            lodgings.add(parseJsonObjectToLodging(result.getJSONObject(i)));
+                        } catch (Exception e) {
+                            System.out.println("Error parsing to lodging: " + e.getMessage());
+                        }
+                    }
                 }
-            }
-        }
 
-        return lodgings;
+                getLodgingsResult.onReady(lodgings);
+            }
+
+            @Override
+            public void onFail() {
+                getLodgingsResult.onReady(new ArrayList<Lodging>());
+            }
+        });
+
+
 
     }
 
-    public boolean pushLodging(Lodging newLodging, boolean isUpdate){
+    public void pushLodging(Lodging newLodging, boolean isUpdate, final GetSuccessResult getSuccessResult){
 
-        String[] keys = new String[8];
-        String[] params = new String[8];
+        String[] keys = new String[9];
+        String[] params = new String[9];
 
         String url = isUpdate
-                ? "http://zeakservices.com/ev3/getUserByEmailAndPassword.php"   // URL UPDATE
-                : "http://zeakservices.com/ev3/getUserByEmailAndPassword.php";  // URL ADD
+                ? "https://zeakservices.com/software/projects/lodging/responses/lodging/update_lodging_resp.php"   // URL UPDATE
+                : "https://zeakservices.com/software/projects/lodging/responses/lodging/push_lodging_resp.php";  // URL ADD
 
-        keys[0] = "userID";
-        keys[1] = "city";
-        keys[2] = "latCoords";
-        keys[3] = "longCoords";
-        keys[4] = "description";
-        keys[5] = "king";
-        keys[6] = "price";
-        keys[7] = "rating";
-        keys[8] = "publishDate";
-        keys[9] = "modifyDate";
+        keys[0] = "id";
+        keys[1] = "userID";
+        keys[2] = "city";
+        keys[3] = "latCoords";
+        keys[4] = "longCoords";
+        keys[5] = "description";
+        keys[6] = "kind";
+        keys[7] = "price";
+        keys[8] = "rating";
 
-
-        params[0] = Integer.toString(newLodging.getUserID());
-        params[1] = newLodging.getCity();
-        params[2] = Integer.toString(newLodging.getLatCoords());
-        params[3] = Integer.toString(newLodging.getLongCoords());
-        params[4] = newLodging.getDescription();
-        params[5] = newLodging.getKind();
-        params[6] = Integer.toString(newLodging.getPrice());
-        params[7] = Integer.toString(newLodging.getRating());
-        params[8] = newLodging.getPublishDate();
-        params[9] = newLodging.getModifyDate();
+        params[0] = Integer.toString(newLodging.getId());
+        params[1] = Integer.toString(newLodging.getUserID());
+        params[2] = newLodging.getCity();
+        params[3] = Integer.toString(newLodging.getLatCoords());
+        params[4] = Integer.toString(newLodging.getLongCoords());
+        params[5] = newLodging.getDescription();
+        params[6] = newLodging.getKind();
+        params[7] = Integer.toString(newLodging.getPrice());
+        params[8] = Integer.toString(newLodging.getRating());
 
         // TODO: CAMBIAR URL
-        JSONArray response = RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params);
+        RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
+            @Override
+            public void onGetData(JSONArray result) {
+                if(result.length() > 0){
+                    getSuccessResult.onReady(true);
+                }
+                else{
+                    getSuccessResult.onReady(false);
+                }
+            }
 
-        if(response.length() > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+            @Override
+            public void onFail() {
+
+            }
+        });
+
+
 
     }
 
-    public boolean deleteLodging(Lodging lodging){
+    public void deleteLodging(Lodging lodging, final GetSuccessResult getSuccessResult){
 
         String[] keys = new String[1];
         String[] params = new String[1];
 
-        String url = "http://zeakservices.com/ev3/getUserByEmailAndPassword.php";
+        String url = "https://zeakservices.com/software/projects/lodging/responses/lodging/delete_lodging_resp.php";
 
         keys[0] = "id";
         params[0] = Integer.toString(lodging.getId());
 
         // TODO: CAMBIAR URL
-        JSONArray response = RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params);
+        RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
+            @Override
+            public void onGetData(JSONArray result) {
+                if(result.length() > 0){
+                    getSuccessResult.onReady(true);
+                }
+                else{
+                    getSuccessResult.onReady(false);
+                }
+            }
 
-        if(response.length() > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+            @Override
+            public void onFail() {
+
+            }
+        });
 
     }
 }
