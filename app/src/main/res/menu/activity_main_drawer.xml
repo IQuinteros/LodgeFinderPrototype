@@ -5,10 +5,6 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@android:drawable/menu_frame"
-            android:title="@string/menu_home" />
-        <item
             android:id="@+id/nav_search"
             android:icon="@drawable/ic_launcher_foreground"
             android:title="Buscar alojamientos"
@@ -23,15 +19,6 @@
             android:icon="@android:drawable/ic_menu_view"
             android:title="Ver tus publicaiones" />
         <item
-            android:id="@+id/nav_modA"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Modifica tus publicaiones"
-            />
-        <item
-            android:id="@+id/nav_delete"
-            android:icon="@android:drawable/ic_delete"
-            android:title="Eliminar alojamiento" />
-        <item
             android:id="@+id/nav_login"
             android:icon="@drawable/ic_profile"
             android:title="Iniciar sesion"
@@ -41,9 +28,5 @@
             android:icon="@drawable/ic_menu_manage"
             android:title="Ajustes de cuenta"
             />
-        <item
-            android:id="@+id/nav_add"
-            android:icon="@android:drawable/ic_menu_add"
-            android:title="Registrarse" />
     </group>
 </menu>

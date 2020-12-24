@@ -9,7 +9,7 @@ import com.iquinteros.lodgefinder.services.UserAPI;
 
 public class LoginUtil {
 
-    public boolean login(Context context, String email, String password){
+    public static boolean login(Context context, String email, String password){
         User user = UserAPI.userAPI.getUserByEmailAndPassword(email, password);
 
         if(user != null){
@@ -29,14 +29,16 @@ public class LoginUtil {
         }
     }
 
-    public boolean logout(Context context){
+    public static boolean logout(Context context){
         LoginAPI loginAPI = new LoginAPI(context);
         return loginAPI.deleteLogin();
     }
 
-    public Login checkLogin(Context context){
+    public static Login checkLogin(Context context){
         LoginAPI loginAPI = new LoginAPI(context);
         Login login = loginAPI.findLogin();
+
+        if(login == null){ return null; }
 
         User user = UserAPI.userAPI.getUserByEmailAndPassword(login.getEmail(), login.getPassword());
 

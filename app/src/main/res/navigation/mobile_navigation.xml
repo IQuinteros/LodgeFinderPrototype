@@ -3,19 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
-
-    <fragment
-        android:id="@+id/nav_home"
-        android:name="com.iquinteros.lodgefinder.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/nav_add"
-        android:name="com.iquinteros.lodgefinder.ui.users.AddUser"
-        android:label="@string/menu_add"
-        tools:layout="@layout/add_user_fragment" />
+    app:startDestination="@+id/nav_search">
 
     <fragment
         android:id="@+id/nav_view"
@@ -24,15 +12,10 @@
         tools:layout="@layout/view_user_fragment" />
 
     <fragment
-        android:id="@+id/nav_delete"
-        android:name="com.iquinteros.lodgefinder.ui.users.DeleteUser"
-        android:label="@string/menu_delete"
-        tools:layout="@layout/delete_user_fragment" />
-    <fragment
         android:id="@+id/nav_search"
-        android:name="com.iquinteros.lodgefinder.buscar"
+        android:name="com.iquinteros.lodgefinder.ui.lodging.SearchLodgingFragment"
         android:label="Buscar Alojamiento"
-        tools:layout="@layout/buscar_fragment"
+        tools:layout="@layout/search_lodging_fragment"
         />
     <fragment
         android:id="@+id/nav_login"
@@ -46,12 +29,7 @@
         android:label="Publicar Alojamiento"
         tools:layout="@layout/fragment_crear_alojamiento"
         />
-    <fragment
-        android:id="@+id/nav_modA"
-        android:name="com.iquinteros.lodgefinder.Modificar_alojamiento"
-        android:label="Modificar publicacion"
-        tools:layout="@layout/fragment_modificar_alojamiento"
-        />
+
     <fragment
         android:id="@+id/nav_modU"
         android:name="com.iquinteros.lodgefinder.Ajustes"

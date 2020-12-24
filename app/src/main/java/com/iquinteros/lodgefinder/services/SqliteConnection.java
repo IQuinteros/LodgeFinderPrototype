@@ -17,7 +17,7 @@ public class SqliteConnection extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE login(id integer, email text, password text, UNIQUE(email))");
+        sqLiteDatabase.execSQL("CREATE TABLE login(id integer, email text, password text)");
     }
 
     @Override
