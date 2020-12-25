@@ -6,12 +6,14 @@ import android.view.Menu;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.iquinteros.lodgefinder.models.Lodging;
 import com.iquinteros.lodgefinder.models.Login;
 import com.iquinteros.lodgefinder.models.User;
 import com.iquinteros.lodgefinder.services.LoginAPI;
@@ -30,28 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
-    /* ADD */
-
-    // Inputs in Add
-    public EditText nombres;
-    public EditText apellidos;
-    public EditText email;
-    public EditText rut;
-    public EditText contacto;
-    public EditText foto;
-    public CheckBox empresa;
-
-    // Buttons in Add
-    public Button acceptBtn;
-
-    /* VIEW */
-    public ListView listView;
-
-    /* DELETE */
-    public EditText delete_rut;
-
-    // Buttons in Delete
-    public Button deleteBtn;
+    // Current lodging to modify
+    public Lodging currentLodgingToModify;
 
     // API
     public LoginAPI loginAPI;
@@ -113,6 +95,21 @@ public class MainActivity extends AppCompatActivity {
 
                 TextView headerUserEmail = (TextView)hView.findViewById(R.id.header_user_email);
                 headerUserEmail.setText(user != null? user.getEmail() : "Para acceder a algunas funciones");
+
+                ImageView headerImage = (ImageView)hView.findViewById(R.id.imageView);
+                int imageID;
+
+                int fotoID = Integer.parseInt(user != null? user.getFoto() : "0");
+                switch (fotoID){
+                    case 1: imageID = R.drawable.basketball_player; break;
+                    case 2: imageID = R.drawable.judo; break;
+                    case 3: imageID = R.drawable.motorcyclist; break;
+                    case 4: imageID = R.drawable.soccer_player; break;
+                    case 5: imageID = R.drawable.swimmer; break;
+                    default: imageID = R.drawable.ic_profile; break;
+                }
+
+                headerImage.setImageResource(imageID);
             }
         });
 

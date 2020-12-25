@@ -1,9 +1,8 @@
-package com.iquinteros.lodgefinder.ui.users;
+package com.iquinteros.lodgefinder.ui.lodging;
 
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
@@ -20,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.iquinteros.lodgefinder.MainActivity;
 import com.iquinteros.lodgefinder.R;
 import com.iquinteros.lodgefinder.models.Lodging;
 import com.iquinteros.lodgefinder.models.Login;
@@ -50,7 +50,6 @@ public class ViewMyLodgingFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(ViewMyLodgingViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     public void loadMyLodgingsList(){
@@ -79,16 +78,9 @@ public class ViewMyLodgingFragment extends Fragment {
 
                                     Lodging selectedLodging = ((Lodging) lodgingList.getItemAtPosition(i));
 
-                                    // TODO: Open navigation with lodging reference
+                                    ((MainActivity)getActivity()).currentLodgingToModify = selectedLodging;
+                                    Navigation.findNavController(getView()).navigate(R.id.nav_modAl);
 
-                                    new AlertDialog.Builder(view.getContext())
-                                            .setTitle(selectedLodging.getCity())
-                                            .setMessage(selectedLodging.toComplexString())
-
-                                            .setPositiveButton(android.R.string.yes, null)
-
-                                            .setIcon(android.R.drawable.ic_dialog_info)
-                                            .show();
 
                                 }
                             });
@@ -103,7 +95,7 @@ public class ViewMyLodgingFragment extends Fragment {
                 else{
                     new AlertDialog.Builder(getActivity())
                             .setTitle("Debe iniciar sesión")
-                            .setMessage("Para buscar alojamientos, inicie sesión")
+                            .setMessage("Para ver sus alojamientos, inicie sesión")
 
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {

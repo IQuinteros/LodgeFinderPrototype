@@ -73,7 +73,26 @@ public class CreateLodgingFragment extends Fragment {
                 EditText price = (EditText) getView().findViewById(R.id.add_lodging_price);
                 final RadioGroup kind = (RadioGroup) getView().findViewById(R.id.add_lodging_kind);
 
-                // TODO: Validation
+                // Validation
+                String validation = "";
+                if(city.getText().toString().isEmpty()){
+                    validation += "Debe agregar la ciudad\n";
+                }
+                if(description.getText().toString().isEmpty()){
+                    validation += "Debe agregar la descripción\n";
+                }
+                if(price.getText().toString().isEmpty()){
+                    validation += "Debe agregar un precio\n";
+                }
+                else if(Integer.parseInt(price.getText().toString()) < 0){
+                    validation += "El precio no puede ser negativo";
+                }
+
+                if(!validation.isEmpty()){
+                    Toast toast = Toast.makeText(getActivity(), validation.substring(0, validation.length() - 1), Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
 
                 // Loading
                 final ProgressDialog dialog = ProgressDialog.show(getActivity(), "",
@@ -105,6 +124,7 @@ public class CreateLodgingFragment extends Fragment {
                                 Toast toast;
                                 if(isSuccess){
                                     toast = Toast.makeText(getActivity(), "Alojamiento añadido", Toast.LENGTH_LONG);
+                                    Navigation.findNavController(getView()).navigate(R.id.nav_lodging_view);
                                 }
                                 else{
                                     toast = Toast.makeText(getActivity(), "Ha ocurrido un error", Toast.LENGTH_LONG);
@@ -128,7 +148,7 @@ public class CreateLodgingFragment extends Fragment {
 
                     new AlertDialog.Builder(context)
                             .setTitle("Debe iniciar sesión")
-                            .setMessage("Para buscar alojamientos, inicie sesión")
+                            .setMessage("Para publicar alojamientos, inicie sesión")
 
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {

@@ -47,8 +47,6 @@ public class RegisterUserFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(RegisterUserViewModel.class);
-        // TODO: Use the ViewModel
-
     }
 
     private void setRegisterButton(View view){
@@ -72,7 +70,32 @@ public class RegisterUserFragment extends Fragment {
                 EditText foto = getView().findViewById(R.id.foto_user);
                 CheckBox empresa = getView().findViewById(R.id.empresa_user);
 
-                // TODO: Validation
+                // Validation
+                String validation = "";
+                if(nombres.getText().toString().isEmpty()){
+                    validation += "Debe agregar su nombre\n";
+                }
+                if(apellidos.getText().toString().isEmpty()){
+                    validation += "Debe agregar su apellido\n";
+                }
+                if(email.getText().toString().isEmpty()){
+                    validation += "Debe agregar su email\n";
+                }
+                if(clave.getText().toString().isEmpty()){
+                    validation += "Debe agregar una contraseña\n";
+                }
+                if(rut.getText().toString().isEmpty()){
+                    validation += "Debe agregar su rut\n";
+                }
+                if(contacto.getText().toString().isEmpty()){
+                    validation += "Debe agregar su número de contacto\n";
+                }
+
+                if(!validation.isEmpty()){
+                    Toast toast = Toast.makeText(getActivity(), validation.substring(0, validation.length() - 1), Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
 
                 User newUser = new User();
                 newUser.setNombres(nombres.getText().toString());
@@ -80,7 +103,12 @@ public class RegisterUserFragment extends Fragment {
                 newUser.setEmail(email.getText().toString());
                 newUser.setRut(Integer.parseInt(rut.getText().toString()));
                 newUser.setNumeroContacto(Integer.parseInt(contacto.getText().toString()));
-                newUser.setFoto(foto.getText().toString());
+
+                String fotoUrl = "1";
+                if(!foto.getText().toString().isEmpty()){
+                    fotoUrl = foto.getText().toString();
+                }
+                newUser.setFoto(fotoUrl);
                 newUser.setEmpresa(empresa.isChecked());
 
                 final ProgressDialog dialog = ProgressDialog.show(getActivity(), "",

@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.users.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,38 +23,39 @@
                 android:layout_gravity="center"/>
 
             <EditText
-                android:id="@+id/nombres_user"
+                android:id="@+id/mod_user_nombres"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombres"
                 android:inputType="textPersonName"/>
             <EditText
-                android:id="@+id/apellidos_user"
+                android:id="@+id/mod_user_apellidos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Apellidos"
                 android:inputType="textPersonName"/>
             <EditText
-                android:id="@+id/email_user"
+                android:id="@+id/mod_user_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
-                android:inputType="textEmailAddress"/>
+                android:inputType="textEmailAddress"
+                android:enabled="false"/>
             <EditText
-                android:id="@+id/pass_user"
+                android:id="@+id/mod_user_contraseña"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Contraseña"
+                android:hint="Contraseña Nueva (Opcional)"
                 android:inputType="textPassword"/>
             <EditText
-                android:id="@+id/rut_user"
+                android:id="@+id/mod_user_rut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Rut"
                 android:maxLength="9"
                 android:inputType="number"/>
             <EditText
-                android:id="@+id/contacto_user"
+                android:id="@+id/mod_user_numero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Número de contacto"
@@ -75,7 +75,7 @@
             </LinearLayout>
 
             <EditText
-                android:id="@+id/foto_user"
+                android:id="@+id/mod_user_foto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="ID Foto Perfil (1 por defecto)"
@@ -95,17 +95,16 @@
                     android:layout_height="wrap_content"
                     android:text="¿Esta cuenta será de empresa?"/>
                 <CheckBox
-                    android:id="@+id/empresa_user"
+                    android:id="@+id/mod_user_empresa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <Button
-                android:id="@+id/accept_btn"
+                android:id="@+id/mod_user_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Modificar cuenta"
-                android:onClick="addUser"/>
+                android:text="Guardar cambios" />
 
             <Button
                 android:id="@+id/logout_btn"

@@ -43,7 +43,6 @@ public class UserAPI {
         params[0] = email;
         params[1] = password;
 
-        // TODO: CAMBIAR URL
         RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
             @Override
             public void onGetData(JSONArray result) {
@@ -75,7 +74,6 @@ public class UserAPI {
 
         params[0] = Integer.toString(id);
 
-        // TODO: CAMBIAR URL
         RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
             @Override
             public void onGetData(JSONArray result) {
@@ -105,7 +103,6 @@ public class UserAPI {
 
         params[0] = email;
 
-        // TODO: CAMBIAR URL
         RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
             @Override
             public void onGetData(JSONArray result) {
@@ -131,7 +128,7 @@ public class UserAPI {
         String[] params = new String[8];
 
         String url = isUpdate
-                ? "https://zeakservices.com/software/projects/lodging/responses/lodging/update_user_resp.php"   // URL UPDATE
+                ? "https://zeakservices.com/software/projects/lodging/responses/user/update_user_resp.php"   // URL UPDATE
                 : "https://zeakservices.com/software/projects/lodging/responses/user/push_user_resp.php";  // URL ADD
 
         keys[0] = "names";
@@ -155,7 +152,6 @@ public class UserAPI {
         params[6] = newUser.getFoto();
         params[7] = newUser.isEmpresa()? "1" : "0";
 
-        // TODO: CAMBIAR URL
         RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
             @Override
             public void onGetData(JSONArray result) {
@@ -188,7 +184,6 @@ public class UserAPI {
         keys[0] = "id";
         params[0] = Integer.toString(user.getId());
 
-        // TODO: CAMBIAR URL
         RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
             @Override
             public void onGetData(JSONArray result) {

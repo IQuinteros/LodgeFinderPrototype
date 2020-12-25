@@ -26,13 +26,10 @@ import com.iquinteros.lodgefinder.utils.LoginUtil;
 
 public class LoginFragment extends Fragment {
 
-
-
     public LoginFragment() {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static LoginFragment newInstance(String param1, String param2) {
         LoginFragment fragment = new LoginFragment();
         return fragment;
@@ -101,7 +98,6 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-                // TODO: Go to register
                 System.out.println("GO TO REGISTER");
                 Navigation.findNavController(getView()).navigate(R.id.nav_addUser);
             }
@@ -109,6 +105,9 @@ public class LoginFragment extends Fragment {
     }
 
     private void checkLogin(final Context context){
+        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "",
+                "Cargando", true);
+
         LoginUtil.checkLogin(context, new GetLoginResult() {
             @Override
             public void onReady(Login login, User user) {
@@ -129,6 +128,7 @@ public class LoginFragment extends Fragment {
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
                 }
+                dialog.dismiss();
             }
         });
     }

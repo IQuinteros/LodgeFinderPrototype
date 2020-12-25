@@ -57,7 +57,6 @@ public class LodgingAPI {
 
         params[0] = search;
 
-        // TODO: CAMBIAR URL
         RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
             @Override
             public void onGetData(JSONArray result) {
@@ -94,7 +93,6 @@ public class LodgingAPI {
 
         params[0] = Integer.toString(id);
 
-        // TODO: CAMBIAR URL
         RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
             @Override
             public void onGetData(JSONArray result) {
@@ -124,7 +122,6 @@ public class LodgingAPI {
 
         params[0] = Integer.toString(userID);
 
-        // TODO: CAMBIAR URL
         RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
             @Override
             public void onGetData(JSONArray result) {
@@ -182,7 +179,6 @@ public class LodgingAPI {
         params[7] = Integer.toString(newLodging.getPrice());
         params[8] = Integer.toString(newLodging.getRating());
 
-        // TODO: CAMBIAR URL
         RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
             @Override
             public void onGetData(JSONArray result) {
@@ -196,7 +192,7 @@ public class LodgingAPI {
 
             @Override
             public void onFail() {
-
+                getSuccessResult.onReady(false);
             }
         });
 
@@ -214,7 +210,6 @@ public class LodgingAPI {
         keys[0] = "id";
         params[0] = Integer.toString(lodging.getId());
 
-        // TODO: CAMBIAR URL
         RemoteConnection.remoteConnection.getDataFromUrl(url, keys, params, new GetDataResult() {
             @Override
             public void onGetData(JSONArray result) {
@@ -228,7 +223,7 @@ public class LodgingAPI {
 
             @Override
             public void onFail() {
-
+                getSuccessResult.onReady(false);
             }
         });
 

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_lodging_view"
-        android:name="com.iquinteros.lodgefinder.ui.users.ViewMyLodgingFragment"
+        android:name="com.iquinteros.lodgefinder.ui.lodging.ViewMyLodgingFragment"
         android:label="Ver mis publicaciones"
         tools:layout="@layout/view_my_lodging_fragment" />
 
@@ -28,6 +28,12 @@
         android:name="com.iquinteros.lodgefinder.ui.lodging.CreateLodgingFragment"
         android:label="Publicar Alojamiento"
         tools:layout="@layout/fragment_crear_alojamiento"
+        />
+    <fragment
+        android:id="@+id/nav_modAl"
+        android:name="com.iquinteros.lodgefinder.ui.lodging.ModifyLodgingFragment"
+        android:label="Modificar alojamiento"
+        tools:layout="@layout/fragment_modificar_alojamiento"
         />
 
     <fragment

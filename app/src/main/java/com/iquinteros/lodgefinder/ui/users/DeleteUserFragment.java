@@ -33,12 +33,7 @@ public class DeleteUserFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(DeleteUserViewModel.class);
-        // TODO: Use the ViewModel
 
-        ((MainActivity)getActivity()).deleteBtn = getView().findViewById(R.id.delete_btn);
-
-
-        ((MainActivity)getActivity()).delete_rut = getView().findViewById(R.id.delete_text);
     }
 
 }

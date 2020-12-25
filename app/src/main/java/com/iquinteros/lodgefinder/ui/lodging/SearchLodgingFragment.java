@@ -45,7 +45,7 @@ public class SearchLodgingFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.search_lodging_fragment, container, false);
-
+        loadLodgings(view);
         onSearchKeyDown(view);
         return view;
     }
@@ -54,9 +54,6 @@ public class SearchLodgingFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(SearchLodgingViewModel.class);
-        // TODO: Use the ViewModel
-
-        loadLodgings();
     }
 
     private void onSearchKeyDown(View view){
@@ -76,15 +73,15 @@ public class SearchLodgingFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                loadLodgings();
+                loadLodgings(viewFinal);
             }
         });
 
     }
 
-    public void loadLodgings(){
+    public void loadLodgings(final View view){
 
-        EditText search = (EditText) getView().findViewById(R.id.search_lodging_text);
+        EditText search = (EditText) view.findViewById(R.id.search_lodging_text);
 
         // Load from API
         LodgingAPI.lodgingAPI.getLodgingsBySearch(search.getText().toString(), new GetLodgingsResult() {
@@ -92,7 +89,7 @@ public class SearchLodgingFragment extends Fragment {
             public void onReady(ArrayList<Lodging> foundLodgings) {
                 ArrayAdapter<Lodging> adapter = new ArrayAdapter<Lodging>(getActivity(), android.R.layout.simple_list_item_1, foundLodgings);
 
-                final ListView lodgingList = (ListView) getView().findViewById(R.id.search_lodging_list);
+                final ListView lodgingList = (ListView) view.findViewById(R.id.search_lodging_list);
                 lodgingList.setAdapter(adapter);
 
                 lodgingList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

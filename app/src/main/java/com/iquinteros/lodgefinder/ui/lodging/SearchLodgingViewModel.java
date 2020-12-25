@@ -12,6 +12,5 @@ import com.iquinteros.lodgefinder.models.Login;
 import com.iquinteros.lodgefinder.utils.LoginUtil;
 
 public class SearchLodgingViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
 
 }
