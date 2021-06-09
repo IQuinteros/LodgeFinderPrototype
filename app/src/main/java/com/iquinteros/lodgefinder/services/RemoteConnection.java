@@ -57,7 +57,10 @@ public class RemoteConnection {
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 System.out.println("Error HTTP: " + error.getMessage());
-                getDataResult.onFail();
+                try {
+                    getDataResult.onFail();
+                }
+                catch(Exception e){}
             }
         });
 
